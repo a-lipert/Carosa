@@ -3,7 +3,37 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carosa.Entities", "Carosa.Entities\Carosa.Entities.csproj", "{707AEFDB-228C-4799-8FA1-C5FFAB798986}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carosa.Core", "Carosa.Core\Carosa.Core.csproj", "{643C6151-331F-4D36-A050-DAB93EB1C845}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carosa.Business", "Carosa.Business\Carosa.Business.csproj", "{D8F9883E-DAAE-4E16-B210-C29DBE077AD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carosa.ConsoleApp", "Carosa.ConsoleApp\Carosa.ConsoleApp.csproj", "{12EEF325-B5A0-48BB-8B05-1BEF5C8921A9}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{707AEFDB-228C-4799-8FA1-C5FFAB798986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{707AEFDB-228C-4799-8FA1-C5FFAB798986}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{707AEFDB-228C-4799-8FA1-C5FFAB798986}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{707AEFDB-228C-4799-8FA1-C5FFAB798986}.Release|Any CPU.Build.0 = Release|Any CPU
+		{643C6151-331F-4D36-A050-DAB93EB1C845}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{643C6151-331F-4D36-A050-DAB93EB1C845}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{643C6151-331F-4D36-A050-DAB93EB1C845}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{643C6151-331F-4D36-A050-DAB93EB1C845}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8F9883E-DAAE-4E16-B210-C29DBE077AD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8F9883E-DAAE-4E16-B210-C29DBE077AD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8F9883E-DAAE-4E16-B210-C29DBE077AD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8F9883E-DAAE-4E16-B210-C29DBE077AD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12EEF325-B5A0-48BB-8B05-1BEF5C8921A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12EEF325-B5A0-48BB-8B05-1BEF5C8921A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12EEF325-B5A0-48BB-8B05-1BEF5C8921A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12EEF325-B5A0-48BB-8B05-1BEF5C8921A9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
