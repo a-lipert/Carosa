@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Carosa.Core.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20220518075708_add-vehicle-entity")]
+    [Migration("20220518093629_add-vehicle-entity")]
     partial class addvehicleentity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -152,7 +152,13 @@ namespace Carosa.Core.Migrations
                     b.Property<decimal>("UsagePrice")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int>("UsagePriceType")
+                        .HasColumnType("int");
+
                     b.Property<int>("VehicleBrandId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("VehicleType")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

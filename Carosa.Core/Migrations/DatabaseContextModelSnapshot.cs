@@ -150,7 +150,13 @@ namespace Carosa.Core.Migrations
                     b.Property<decimal>("UsagePrice")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int>("UsagePriceType")
+                        .HasColumnType("int");
+
                     b.Property<int>("VehicleBrandId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("VehicleType")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
