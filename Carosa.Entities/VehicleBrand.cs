@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Carosa.Entities
 {
@@ -14,5 +9,7 @@ namespace Carosa.Entities
 
         [StringLength(3)]
         public string CountryOfOriginIso { get; set; }
-    }
+        public ICollection<Vehicle> Vehicle { get; set; }
+
+    }                                                              
 }

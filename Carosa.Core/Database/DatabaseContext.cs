@@ -10,6 +10,8 @@ namespace Carosa.Core.Database
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Address> Address { get; set; }
         public DbSet<VehicleBrand> VehicleBrand { get; set; }
+        public DbSet<Vehicle> Vehicles { get; set; }
+
 
 
     }
