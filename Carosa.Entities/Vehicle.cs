@@ -12,6 +12,7 @@ namespace Carosa.Entities
         public decimal PriceWhenNew { get; set; }
         public decimal UsagePrice { get; set; }
         public UsagePriceType UsagePriceType { get; set; }
+        public VehicleUnit VehicleUnit { get; set; }
        
     }
 }
