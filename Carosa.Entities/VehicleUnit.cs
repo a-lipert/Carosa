@@ -17,5 +17,5 @@ namespace Carosa.Entities
         public Vehicle Vehicle { get; set; }
 
     }
-    
+
 }
