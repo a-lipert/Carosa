@@ -197,7 +197,7 @@ namespace Carosa.Core.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("VehicleBrand");
+                    b.ToTable("VehicleBrands");
                 });
 
             modelBuilder.Entity("Carosa.Entities.VehicleUnit", b =>

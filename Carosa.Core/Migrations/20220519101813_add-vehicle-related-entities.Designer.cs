@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Carosa.Core.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20220517080332_add-vehiclebrand-entity")]
-    partial class addvehiclebrandentity
+    [Migration("20220519101813_add-vehicle-related-entities")]
+    partial class addvehiclerelatedentities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -123,6 +123,51 @@ namespace Carosa.Core.Migrations
                     b.ToTable("Customers");
                 });
 
+            modelBuilder.Entity("Carosa.Entities.Vehicle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTimeOffset>("DeletedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<int>("MaxSpeed")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("PriceWhenNew")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ServiceAfterKm")
+                        .HasColumnType("int");
+
+                    b.Property<DateTimeOffset>("UpdatedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<decimal>("UsagePrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("UsagePriceType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("VehicleBrandId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("VehicleType")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VehicleBrandId");
+
+                    b.ToTable("Vehicles");
+                });
+
             modelBuilder.Entity("Carosa.Entities.VehicleBrand", b =>
                 {
                     b.Property<int>("Id")
@@ -154,7 +199,50 @@ namespace Carosa.Core.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("VehicleBrand");
+                    b.ToTable("VehicleBrands");
+                });
+
+            modelBuilder.Entity("Carosa.Entities.VehicleUnit", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<double>("CurrentLatitude")
+                        .HasColumnType("float");
+
+                    b.Property<double>("CurrentLongitude")
+                        .HasColumnType("float");
+
+                    b.Property<DateTimeOffset>("DeletedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTimeOffset>("FirstUsageAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<bool>("IsBroken")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset>("NextServiceAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTimeOffset>("UpdatedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<int>("VehicleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VehicleId")
+                        .IsUnique();
+
+                    b.ToTable("VehicleUnits");
                 });
 
             modelBuilder.Entity("Carosa.Entities.Customer", b =>
@@ -170,6 +258,39 @@ namespace Carosa.Core.Migrations
                     b.Navigation("HomeAddress");
 
                     b.Navigation("InvoiceAddress");
+                });
+
+            modelBuilder.Entity("Carosa.Entities.Vehicle", b =>
+                {
+                    b.HasOne("Carosa.Entities.VehicleBrand", "VehicleBrand")
+                        .WithMany("Vehicle")
+                        .HasForeignKey("VehicleBrandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("VehicleBrand");
+                });
+
+            modelBuilder.Entity("Carosa.Entities.VehicleUnit", b =>
+                {
+                    b.HasOne("Carosa.Entities.Vehicle", "Vehicle")
+                        .WithOne("VehicleUnit")
+                        .HasForeignKey("Carosa.Entities.VehicleUnit", "VehicleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Vehicle");
+                });
+
+            modelBuilder.Entity("Carosa.Entities.Vehicle", b =>
+                {
+                    b.Navigation("VehicleUnit")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Carosa.Entities.VehicleBrand", b =>
+                {
+                    b.Navigation("Vehicle");
                 });
 #pragma warning restore 612, 618
         }

@@ -11,5 +11,5 @@ namespace Carosa.Entities
         public string CountryOfOriginIso { get; set; }
         public ICollection<Vehicle> Vehicle { get; set; }
 
-    }                                                              
+    }
 }
