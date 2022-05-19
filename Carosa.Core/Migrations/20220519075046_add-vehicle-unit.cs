@@ -16,11 +16,11 @@ namespace Carosa.Core.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     VehicleId = table.Column<int>(type: "int", nullable: false),
-                    FirstUsageAt = table.Column<int>(type: "int", nullable: false),
+                    FirstUsageAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    NextServiceAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     CurrentLatitude = table.Column<double>(type: "float", nullable: false),
                     CurrentLongitude = table.Column<double>(type: "float", nullable: false),
-                    NextService = table.Column<int>(type: "int", nullable: false),
-                    ReportedBroken = table.Column<int>(type: "int", nullable: true),
+                    IsBroken = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     UpdatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     DeletedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)

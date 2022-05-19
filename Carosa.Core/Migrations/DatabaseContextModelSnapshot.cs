@@ -220,14 +220,14 @@ namespace Carosa.Core.Migrations
                     b.Property<DateTimeOffset>("DeletedAt")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<int>("FirstUsageAt")
-                        .HasColumnType("int");
+                    b.Property<DateTimeOffset>("FirstUsageAt")
+                        .HasColumnType("datetimeoffset");
 
-                    b.Property<int>("NextService")
-                        .HasColumnType("int");
+                    b.Property<bool>("IsBroken")
+                        .HasColumnType("bit");
 
-                    b.Property<int?>("ReportedBroken")
-                        .HasColumnType("int");
+                    b.Property<DateTimeOffset>("NextServiceAt")
+                        .HasColumnType("datetimeoffset");
 
                     b.Property<DateTimeOffset>("UpdatedAt")
                         .HasColumnType("datetimeoffset");
@@ -271,11 +271,13 @@ namespace Carosa.Core.Migrations
 
             modelBuilder.Entity("Carosa.Entities.VehicleUnit", b =>
                 {
-                    b.HasOne("Carosa.Entities.Vehicle", null)
+                    b.HasOne("Carosa.Entities.Vehicle", "Vehicle")
                         .WithOne("VehicleUnit")
                         .HasForeignKey("Carosa.Entities.VehicleUnit", "VehicleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Vehicle");
                 });
 
             modelBuilder.Entity("Carosa.Entities.Vehicle", b =>
