@@ -4,6 +4,7 @@ using Carosa.Core.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Carosa.Core.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20220519114830_add-vehicleunitreservation-entitiy")]
+    partial class addvehicleunitreservationentitiy
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -244,8 +246,6 @@ namespace Carosa.Core.Migrations
                 });
 
             modelBuilder.Entity("Carosa.Entities.VehicleUnitReservation", b =>
-            modelBuilder.Entity("Carosa.Entities.VehicleUnitUsage", b =>
-
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -272,17 +272,6 @@ namespace Carosa.Core.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<int>("VehicleUnitId")
-
-                    b.Property<int>("KilometersRun")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset>("UpdatedAt")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<DateTimeOffset>("UsageEndedAt")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<int>("VehicleId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -293,10 +282,6 @@ namespace Carosa.Core.Migrations
                         .IsUnique();
 
                     b.ToTable("VehicleUnitReservations");
-
-                    b.HasIndex("VehicleId");
-
-                    b.ToTable("VehicleUnitUsages");
                 });
 
             modelBuilder.Entity("Carosa.Entities.Customer", b =>
@@ -340,12 +325,6 @@ namespace Carosa.Core.Migrations
                 {
                     b.HasOne("Carosa.Entities.Customer", "Customer")
                         .WithMany("VehicleUnitReservation")
-
-            modelBuilder.Entity("Carosa.Entities.VehicleUnitUsage", b =>
-                {
-                    b.HasOne("Carosa.Entities.Customer", "Customer")
-                        .WithMany("VehicleUnitUsage")
- 
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -353,35 +332,23 @@ namespace Carosa.Core.Migrations
                     b.HasOne("Carosa.Entities.VehicleUnit", "VehicleUnit")
                         .WithOne("VehicleUnitReservation")
                         .HasForeignKey("Carosa.Entities.VehicleUnitReservation", "VehicleUnitId")
-
-                    b.HasOne("Carosa.Entities.Vehicle", "Vehicle")
-                        .WithMany("VehicleUnitUsage")
-                        .HasForeignKey("VehicleId")
- 
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Customer");
 
                     b.Navigation("VehicleUnit");
-
-                    b.Navigation("Vehicle");
- 
                 });
 
             modelBuilder.Entity("Carosa.Entities.Customer", b =>
                 {
                     b.Navigation("VehicleUnitReservation");
-
-                    b.Navigation("VehicleUnitUsage");
                 });
 
             modelBuilder.Entity("Carosa.Entities.Vehicle", b =>
                 {
                     b.Navigation("VehicleUnit")
                         .IsRequired();
-
-                    b.Navigation("VehicleUnitUsage");
                 });
 
             modelBuilder.Entity("Carosa.Entities.VehicleBrand", b =>

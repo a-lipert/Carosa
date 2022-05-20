@@ -11,6 +11,8 @@
         public Address HomeAddress { get; set; }
         public int? HomeAddressId { get; set; }
         public bool InvoiceAddressSameAsHome { get; set; }
+        public ICollection <VehicleUnitReservation> VehicleUnitReservation { get; set; }  
         public ICollection <VehicleUnitUsage> VehicleUnitUsage { get; set; }
+
     }
 }
