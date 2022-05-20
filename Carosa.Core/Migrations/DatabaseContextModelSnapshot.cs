@@ -243,9 +243,7 @@ namespace Carosa.Core.Migrations
                     b.ToTable("VehicleUnits");
                 });
 
-            modelBuilder.Entity("Carosa.Entities.VehicleUnitReservation", b =>
             modelBuilder.Entity("Carosa.Entities.VehicleUnitUsage", b =>
-
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -262,17 +260,6 @@ namespace Carosa.Core.Migrations
                     b.Property<DateTimeOffset>("DeletedAt")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<bool>("ReservationFulfilled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset>("ReservedUntill")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<DateTimeOffset>("UpdatedAt")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<int>("VehicleUnitId")
-
                     b.Property<int>("KilometersRun")
                         .HasColumnType("int");
 
@@ -288,11 +275,6 @@ namespace Carosa.Core.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
-
-                    b.HasIndex("VehicleUnitId")
-                        .IsUnique();
-
-                    b.ToTable("VehicleUnitReservations");
 
                     b.HasIndex("VehicleId");
 
@@ -336,43 +318,27 @@ namespace Carosa.Core.Migrations
                     b.Navigation("Vehicle");
                 });
 
-            modelBuilder.Entity("Carosa.Entities.VehicleUnitReservation", b =>
-                {
-                    b.HasOne("Carosa.Entities.Customer", "Customer")
-                        .WithMany("VehicleUnitReservation")
-
             modelBuilder.Entity("Carosa.Entities.VehicleUnitUsage", b =>
                 {
                     b.HasOne("Carosa.Entities.Customer", "Customer")
                         .WithMany("VehicleUnitUsage")
- 
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Carosa.Entities.VehicleUnit", "VehicleUnit")
-                        .WithOne("VehicleUnitReservation")
-                        .HasForeignKey("Carosa.Entities.VehicleUnitReservation", "VehicleUnitId")
-
                     b.HasOne("Carosa.Entities.Vehicle", "Vehicle")
                         .WithMany("VehicleUnitUsage")
                         .HasForeignKey("VehicleId")
- 
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Customer");
 
-                    b.Navigation("VehicleUnit");
-
                     b.Navigation("Vehicle");
- 
                 });
 
             modelBuilder.Entity("Carosa.Entities.Customer", b =>
                 {
-                    b.Navigation("VehicleUnitReservation");
-
                     b.Navigation("VehicleUnitUsage");
                 });
 
@@ -387,12 +353,6 @@ namespace Carosa.Core.Migrations
             modelBuilder.Entity("Carosa.Entities.VehicleBrand", b =>
                 {
                     b.Navigation("Vehicle");
-                });
-
-            modelBuilder.Entity("Carosa.Entities.VehicleUnit", b =>
-                {
-                    b.Navigation("VehicleUnitReservation")
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
