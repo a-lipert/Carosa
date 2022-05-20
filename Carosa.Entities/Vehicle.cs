@@ -13,5 +13,6 @@ namespace Carosa.Entities
         public decimal UsagePrice { get; set; }
         public UsagePriceType UsagePriceType { get; set; }
         public VehicleUnit VehicleUnit { get; set; }
+        public ICollection<VehicleUnitUsage> VehicleUnitUsage { get; set; }
     }
 }
