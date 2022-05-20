@@ -15,7 +15,6 @@ namespace Carosa.Entities
         public double CurrentLongitude { get; set; }
         public bool IsBroken { get; set; }
         public Vehicle Vehicle { get; set; }
-        public VehicleUnitReservation VehicleUnitReservation { get; set; }
 
     }
 

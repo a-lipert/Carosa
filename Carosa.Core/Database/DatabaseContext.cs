@@ -11,8 +11,6 @@ namespace Carosa.Core.Database
         public DbSet<Address> Address { get; set; }
         public DbSet<VehicleBrand> VehicleBrands { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
-        public DbSet<VehicleUnit> VehicleUnits { get; set; }
-        public DbSet<VehicleUnitReservation> VehicleUnitReservations { get; set;}
         public DbSet<VehicleUnit> VehicleUnits { get; set; }    
         public DbSet<VehicleUnitUsage> VehicleUnitUsages { get; set; }
     }
