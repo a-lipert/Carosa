@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Carosa.Core.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20220523103812_add-vehicleunitreservation-entity")]
-    partial class addvehicleunitreservationentity
+    [Migration("20220523110750_add-vehiclereservation-entity")]
+    partial class addvehiclereservationentity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
