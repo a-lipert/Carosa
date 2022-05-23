@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Carosa.Core.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20220523075421_add-vehicleunitreservation-entity")]
+    [Migration("20220523103812_add-vehicleunitreservation-entity")]
     partial class addvehicleunitreservationentity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -278,8 +278,7 @@ namespace Carosa.Core.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.HasIndex("VehicleUnitId")
-                        .IsUnique();
+                    b.HasIndex("VehicleUnitId");
 
                     b.ToTable("VehicleUnitReservations");
                 });
@@ -368,8 +367,8 @@ namespace Carosa.Core.Migrations
                         .IsRequired();
 
                     b.HasOne("Carosa.Entities.VehicleUnit", "VehicleUnit")
-                        .WithOne("VehicleUnitReservation")
-                        .HasForeignKey("Carosa.Entities.VehicleUnitReservation", "VehicleUnitId")
+                        .WithMany("VehicleUnitReservations")
+                        .HasForeignKey("VehicleUnitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -419,8 +418,7 @@ namespace Carosa.Core.Migrations
 
             modelBuilder.Entity("Carosa.Entities.VehicleUnit", b =>
                 {
-                    b.Navigation("VehicleUnitReservation")
-                        .IsRequired();
+                    b.Navigation("VehicleUnitReservations");
                 });
 #pragma warning restore 612, 618
         }
