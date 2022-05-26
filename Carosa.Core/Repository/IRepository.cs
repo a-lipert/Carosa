@@ -1,6 +1,6 @@
 ﻿using Carosa.Entities;
 
-namespace Carosa.Core.Interfaces
+namespace Carosa.Core.Repository
 {
     public interface IRepository<T> where T : BaseEntity
     {
